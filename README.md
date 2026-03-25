@@ -3,5 +3,6 @@
 1. Data Types
 2. Variables
 3. Operators
+4. Control flows - if, elif, else statements & loops (for and while)
 
 More to come
