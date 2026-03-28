@@ -62,3 +62,34 @@ for num in numbers:
 most_frequent = max(num_count, key=num_count.get)
 
 print(f"Most frequent value: {most_frequent}")
+
+#
+# 7. Merge two dictionaries using **kwargs
+#
+dict_1 = {"Keyboards": 8, "Mice": 12}
+dict_2 = {"Laptops": 10, "Monitors": 5}
+
+merg = {**dict_1, **dict_2}
+
+print(merg)
+
+#
+# 8. Remove duplicates from a list
+#
+product_ids = [101, 102, 103, 101, 104, 102]
+names = ["Ted", "Alan", "Jim", "Ted", "Barney", "Fred", "Marshall", "Barney"]
+
+unique_products = list(set(product_ids))
+unique_names = list(set(names))
+
+print(f"Unique product IDs: {unique_products}")
+print(f"Unique names: {unique_names}")
+
+#
+# 8. Remove item from a dictionary.
+#
+items = {20, 34, 84, 101, 99, 69}
+remove = {34, 99}
+new = items - remove
+
+print(new)
