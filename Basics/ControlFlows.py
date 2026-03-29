@@ -1,5 +1,5 @@
 #
-# 1. Basic 'if' statement. 
+# 1. 'if' statement. 
 #
 var_1 = 24
 var_2 = 100
@@ -8,7 +8,7 @@ if var_1 < var_2:
     print("Variable 1 is less than variable 2.")
 
 #
-# 2. Basic 'if-else' statement. 
+# 2. 'if-else' statement. 
 #
 var_1 = 24
 var_2 = 100
@@ -19,7 +19,7 @@ else:
     print("Variable 2 is greater than variable 1.")
 
 #
-# 3. Check if a number is Odd or Even using an 'if' and 'else' statement.
+# 3. Check if a number are Odd or Even.
 #    Use the input() function to ask user for a number. 
 #
 number = int(input("Enter a number: "))
@@ -30,7 +30,7 @@ else:
     print(f"{number} is an odd number.")
 
 #
-# 4. Find the largest number using an 'if', 'elif' and 'else' statements.
+# 4. Find the largest number.
 #    Use the input() function to ask user for 3 numbers. 
 #    The map() function applies to each object. 
 #    The split() function turns a string (input objects) into a list.
@@ -91,7 +91,7 @@ for count in range(1, num + 1):
 print(f"The factorial of {num} is: {factorial}")
 
 #
-# 7. Reverse a number.
+# 8. Reverse a number.
 #    Use the input() function to ask user for a number. 
 #    Use a while loop to execute aslong as condition is true.
 #  
