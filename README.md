@@ -18,9 +18,35 @@
    *  Logical operators.
    *  Assignment operators.
    *  Bitwise operators.
-4. Control flows - if, elif, else statements & loops (for and while)
+4. Control flows
+   *  'if' statement. 
+   *  'if-else' statement. 
+   *  Find the largest number.
+   *  Count numbers from 1 to N. 
+   *  Count all even numbers from 2 to N.
+   *  Sum of the first natural numbers of N (arithmetic series of number).
+   *  Facorial of a number.
+   *  Reverse a number.
+   *  Multiplication table up to 10.
+   *  Count number of digits in a number.
 5. Functions
+   *  
+   *  
+   *  
+   *  
+   *  
 6. Data Structures
+   *  
+   *  
+   *  
+   *  
+   *  
 7. String Formatting
+   *  
+   *  
+   *  
+   *  
+   *  
+8. Input/Output and Error handling
 
 More to come...
