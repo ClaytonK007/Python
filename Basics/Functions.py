@@ -77,7 +77,7 @@ num = int(input("Enter a number you want to find a factorial of: "))
 print(f"The factorial of {num} is: {recursive(num)}")
 
 #
-# 7. Create a function that returns multiple values. 
+# 8. Create a function that returns multiple values. 
 #
 def calculate(x, y):
     return x + y, x * y

@@ -74,7 +74,7 @@ merg = {**dict_1, **dict_2}
 print(merg)
 
 #
-# 8. Remove duplicates from a list
+# 8. Remove duplicates from a list.
 #
 product_ids = [101, 102, 103, 101, 104, 102]
 names = ["Ted", "Alan", "Jim", "Ted", "Barney", "Fred", "Marshall", "Barney"]
@@ -86,7 +86,7 @@ print(f"Unique product IDs: {unique_products}")
 print(f"Unique names: {unique_names}")
 
 #
-# 8. Remove item from a dictionary.
+# 9. Remove item from a dictionary.
 #
 items = {20, 34, 84, 101, 99, 69}
 remove = {34, 99}
