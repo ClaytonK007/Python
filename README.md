@@ -30,23 +30,37 @@
    *  Multiplication table up to 10.
    *  Count number of digits in a number.
 5. Functions
-   *  
-   *  
-   *  
-   *  
-   *  
+   *  Define and call a function.
+   *  Create a function with parameters.
+   *  Create a function that returns a value.
+   *  Create a function using a default parameter.
+   *  Create a function using a global variable.
+   *  Create a function with a local variable.
+   *  Create a recursive function to complete a factorial.
+   *  Create a function that returns multiple values.
 6. Data Structures
-   *  
-   *  
-   *  
-   *  
-   *  
+   *  Create a list and add an item.
+   *  Sort a list in ascending order.
+   *  Find highest value in a list using the max() function.
+   *  Count frequency a word is used in a sentence.
+   *  Find common elements is two sets using the & comparison operator.
+   *  Find most requent value in a dictionary using the max() and get() function.
+   *  Merge two dictionaries using **kwargs.
+   *  Remove duplicates from a list.
+   *  Remove item from a dictionary.
 7. String Formatting
-   *  
-   *  
-   *  
-   *  
-   *  
+   *  Extracting from a string.
+   *  Reverse words in a string.
+   *  Extract hashtags from a sentence.
+   *  Validate password strength.
+   *  Remove unnecessary whitespaces from a sentence.
+   *  Convert string to title case.
+   *  Replace a word in a string.
 8. Input/Output and Error handling
+   *  
+   *  
+   *  
+   *  
+   *  
 
 More to come...
