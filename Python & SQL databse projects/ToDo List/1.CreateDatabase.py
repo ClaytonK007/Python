@@ -5,8 +5,8 @@ from colorama import Fore, Style
 # create databse connection
 mydb = mysql.connector.connect(
     host = "localhost",
-    user = "Admin",
-    password = "SQLpassword!",
+    user = "(Your User)",
+    password = "(Your Password)!",
     )
 
 mycursor = mydb.cursor()
