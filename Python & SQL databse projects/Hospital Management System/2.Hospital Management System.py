@@ -25,6 +25,8 @@ def search_hospital(Hospital_Name):
         print("*"*10)
         if hospitals:
             print(Fore.GREEN + f"Hospital ID: {hospitals[0]}, Hospital Name: {hospitals[1]}, Bed Count: {hospitals[2]}" + Style.RESET_ALL)
+        else:
+            print(Fore.RED + "Hospital name not found or does not exist. Please try again." + Style.RESET_ALL)
         print("*"*10)
 
 def update_hospital():
