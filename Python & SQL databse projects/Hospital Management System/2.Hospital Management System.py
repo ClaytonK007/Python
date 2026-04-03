@@ -1,28 +1,62 @@
-# Hospital functions
-def add_hospital():
+import mysql.connector
+from colorama import Fore, Style
 
-def search_hospital():
+mydb = mysql.connector.connect(
+     host = "localhost",
+     user = "Admin",
+     password = "SQLpassword!",
+     database = "hospital"
+)
+
+mycursor = mydb.cursor()
+
+# Hospital functions
+def add_hospital(Hospital_Name, Bed_Count):
+    mycursor.execute('''INSERT INTO hospital.Hospital (Hospital_Name, Bed_count) VALUES (%s, %s)''', (Hospital_Name, Bed_Count))
+    mydb.commit()
+    print("*"*10)
+    print(Fore.GREEN + f"Hospital {Hospital_Name}, added successfully." + Style.RESET_ALL)
+    print("*"*10)
+
+def search_hospital(Hospital_Name):
+        mycursor.execute('''SELECT * FROM hospital.Hospital WHERE Hospital_Name = %s''', (Hospital_Name,))
+        hospitals = mycursor.fetchone()
+        print(Fore.GREEN + f"Hospital Info: " + Style.RESET_ALL)
+        print("*"*10)
+        if hospitals:
+            print(Fore.GREEN + f"Hospital ID: {hospitals[0]}, Hospital Name: {hospitals[1]}, Bed Count: {hospitals[2]}" + Style.RESET_ALL)
+        print("*"*10)
 
 def update_hospital():
+    pass
 
 def delete_hospital():
+    pass
 
 def view_hospital():
+    pass
 
 # Doctors functions
 def add_doctor():
+    pass
 
 def search_doctor():
+    pass
 
 def list_doctor_bySpec():
+    pass
 
 def update_doc_exp():
+    pass
 
 def delete_doctor():
+    pass
 
 def show_all_doctors():
+    pass
 
 def list_doc_by_hospital():
+    pass
 
 # Menu
 while True:
@@ -41,9 +75,12 @@ while True:
         print("1. Add Hospital.\n2. Search Hospital\n3. Update Hospital\n4. Delete Hospital\n5. View Hospitals\n6. Go back.")
         opt_1 = int(input("Enter option: "))
         if opt_1 == 1:
-            add_hospital()
+            Hospital_Name = input("Enter Hospital Name to be added: ")
+            Bed_Count = input("Enter bed count of new hospital added: ")
+            add_hospital(Hospital_Name, Bed_Count)
         elif opt_1 == 2:
-            search_hospital()
+            Hospital_Name = input("Enter Hospital Name: ")
+            search_hospital(Hospital_Name)
         elif opt_1 == 3:
             update_hospital()
         elif opt_1 == 4:
