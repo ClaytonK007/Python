@@ -1,6 +1,4 @@
 import mysql.connector
-from datetime import datetime
-from colorama import Fore, Style
 
 # create databse connection
 mydb = mysql.connector.connect(
