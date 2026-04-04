@@ -3,8 +3,8 @@ from colorama import Fore, Style
 
 mydb = mysql.connector.connect(
      host = "localhost",
-     user = "Admin",
-     password = "SQLpassword!",
+    user = "(your username)",
+    password = "(your password)",
      database = "hospital"
 )
 
