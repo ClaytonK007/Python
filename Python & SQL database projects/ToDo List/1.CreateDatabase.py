@@ -1,12 +1,10 @@
 import mysql.connector
-from datetime import datetime
-from colorama import Fore, Style
 
 # create databse connection
 mydb = mysql.connector.connect(
     host = "localhost",
-    user = "Admin",
-    password = "SQLpassword!",
+    user = "(your username)",
+    password = "(your password)",
     )
 
 mycursor = mydb.cursor()
