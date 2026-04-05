@@ -29,10 +29,16 @@ def search_hospital(Hospital_Name):
             print(Fore.RED + "Hospital name not found or does not exist. Please try again." + Style.RESET_ALL)
         print("*"*10)
 
-def update_hospital():
-    pass
+def update_hospital(Hospital_Name, new_Hospital_Name):
+    try:
+        mycursor.execute('''UPDATE hospital.hospital SET Hospital_Name = %s WHERE Hospital_Name = %s''', (Hospital_Name, new_Hospital_Name,))
+        mydb.commit()
+        print(Fore.GREEN + f"{Hospital_Name} has been changed to {new_Hospital_Name}." + Style.RESET_ALL)
+        print("*"*10)
+    except mysql.connector.Error as err:
+        print(Fore.RED + f"{Hospital_Name} not changed. Error: {err}")
+        print("*"*10)
           
-
 def delete_hospital(Hospital_Name):
             mycursor.execute('''DELETE FROM hospital.Hospital WHERE Hospital_Name = %s''', (Hospital_Name,))
             mydb.commit()
@@ -63,7 +69,7 @@ def search_doctor(Doctor_Name):
     print(Fore.GREEN + f"Doctors Info: " + Style.RESET_ALL)
     print("*"*10)
     if doctors:
-        print(Fore.GREEN + f"Doctor ID: {doctors[0]}, Doctors Name: {doctors[1]}, Hospital ID: {doctors[2]}, Joining Date: {doctors[3]}, Speciality: {doctors[4]}, Salary: {doctors[5]}, Experience: {doctors[6]}" + Style.RESET_ALL)
+        print(Fore.GREEN + f"Doctor ID: {doctors[0]}\nDoctors Name: {doctors[1]}\nHospital ID: {doctors[2]}\nJoining Date: {doctors[3]}\nSpeciality: {doctors[4]}\nSalary: {doctors[5]}\nExperience: {doctors[6]} years" + Style.RESET_ALL)
     else:
         print(Fore.RED + "Doctors name not found or does not exist. Please try again." + Style.RESET_ALL)
     print("*"*10)
@@ -74,7 +80,7 @@ def list_doctor_bySpec(Speciality, Salary):
     print(Fore.GREEN + f"Doctors Info by specificaitons: " + Style.RESET_ALL)
     print("*"*10)
     if doctors:
-        print(Fore.GREEN + f"Doctor ID: {doctors[0]}, Doctors Name: {doctors[1]}, Hospital ID: {doctors[2]}, Joining Date: {doctors[3]}, Speciality: {doctors[4]}, Salary from: {doctors[5]}, Experience: {doctors[6]} years" + Style.RESET_ALL)
+        print(Fore.GREEN + f"Doctor ID: {doctors[0]}\nDoctors Name: {doctors[1]}\nHospital ID: {doctors[2]}\nJoining Date: {doctors[3]}\nSpeciality: {doctors[4]}\nSalary from: {doctors[5]}\nExperience: {doctors[6]} years" + Style.RESET_ALL)
     else:
         print(Fore.RED + "Error. Please try again." + Style.RESET_ALL)
     print("*"*10)    
@@ -85,18 +91,43 @@ def update_doc_exp(Doctor_Id, new_experience):
         mydb.commit()
         print(Fore.GREEN + f"Doctor ID experience has been updated to {new_experience}." + Style.RESET_ALL)
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
+        print(Fore.RED + f"Error: {err}" + Style.RESET_ALL)
     print("*"*10)
 
-def delete_doctor():
-    pass
+def delete_doctor(Doctor_Id):
+    try:
+        mycursor.execute('''DELETE FROM hospital.Doctor WHERE Doctor_Id = %s''', (Doctor_Id,))
+        mydb.commit()
+        print(Fore.RED + f"Docotr ID {Doctor_Id} has been deleted." + Style.RESET_ALL)
+    except mysql.connector.Error as err:
+        print(Fore.RED + f"Error:{err}" + Style.RESET_ALL)
+    print("*"*10)
 
 def show_all_doctors():
-    pass
+    try:
+        mycursor.execute('''SELECT * FROM hospital.Doctor''')
+        doctors = mycursor.fetchall()
+        print("List of Doctors:")
+        print("*"*10)
+        for doctor in doctors:
+            print(Fore.GREEN + f"Doctors ID: {doctor[0]}\nDoctors Name: {doctor[1]}\nJoining Date: {doctor[3]}\nSpeciality: {doctor[4]},Salary: {doctor[5]}\nExperience: {doctor[6]}" + Style.RESET_ALL)
+            print("*"*10)
+    except mysql.connector.Error as err:
+        print(Fore.RED + f"Error:{err}" + Style.RESET_ALL)
+    print("*"*10)
 
-def list_doc_by_hospital():
-    pass
-
+def list_doc_by_hospital(Hospital_Id):
+    try:
+        mycursor.execute('''SELECT * FROM hospital.Doctor WHERE Hospital_Id = %s''', (Hospital_Id,))
+        doctors = mycursor.fetchall()
+        print("List of Doctors:")
+        print("*"*10)
+        for doctor in doctors:
+            print(Fore.GREEN + f"Doctors ID: {doctor[0]}\nDoctors Name: {doctor[1]}\nJoining Date: {doctor[3]}\nSpeciality: {doctor[4]},Salary: {doctor[5]}\nExperience: {doctor[6]}" + Style.RESET_ALL)
+            print("*"*10)
+    except mysql.connector.Error as err:
+        print(Fore.RED + f"Error:{err}" + Style.RESET_ALL)
+        print("*"*10)
 # Menu
 while True:
     try:
@@ -121,7 +152,9 @@ while True:
             Hospital_Name = input("Enter Hospital Name: ")
             search_hospital(Hospital_Name)
         elif opt_1 == 3:
-            update_hospital()
+            Hospital_Name = input("Enter Hospital name to be changed: ")
+            new_Hospital_Name = input("Enter new Hospital name: ")
+            update_hospital(Hospital_Name, new_Hospital_Name)
         elif opt_1 == 4:
             Hospital_Name = input("Enter Hospital Name to delete: ")
             delete_hospital(Hospital_Name)
@@ -155,11 +188,13 @@ while True:
             new_experience = int(input("Enter years of experience: "))
             update_doc_exp(Doctor_Id, new_experience)
         elif opt_2 == 5:
-            delete_doctor()
+            Doctor_Id = int(input("Enter Doctor ID to be deleted: "))
+            delete_doctor(Doctor_Id)
         elif opt_2 == 6:
             show_all_doctors()
         elif opt_2 == 7:
-            list_doc_by_hospital()
+            Hospital_Id = int(input("Enter Hospital ID to list doctors: "))
+            list_doc_by_hospital(Hospital_Id)
         elif opt_2 == 8:
             continue
         else:
@@ -168,8 +203,3 @@ while True:
         break
     else:
         print("Incorrect option. Please choose valid option.")
-        
-
-
-
-
