@@ -45,7 +45,7 @@ print(Fore.GREEN + str(mycursor.rowcount), "doctors data inserted." + Style.RESE
 
 # create hostpital table
 mycursor.execute(''' CREATE TABLE IF NOT EXISTS hospital.Hospital (
-                 Hospital_Id INT PRIMARY KEY NOT NULL,
+                 Hospital_Id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
                  Hospital_Name VARCHAR (255) NOT NULL,
                  Bed_Count INT
                 )''')
