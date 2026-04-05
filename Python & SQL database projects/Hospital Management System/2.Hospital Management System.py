@@ -57,14 +57,36 @@ def add_doctor(Doctor_Name, Hospital_Id, Joining_Date, Speciality, Salary):
     print(Fore.GREEN + f"Doctor: {Doctor_Name}, Hospital ID: {Hospital_Id}, Joining Date: {Joining_Date}, Speciality: {Speciality}, Salary: {Salary} added successfully." + Style.RESET_ALL)
     print("*"*10)
 
-def search_doctor():
-    pass
+def search_doctor(Doctor_Name):
+    mycursor.execute('''SELECT * FROM hospital.Doctor WHERE Doctor_Name = %s''', (Doctor_Name,))
+    doctors = mycursor.fetchone()
+    print(Fore.GREEN + f"Doctors Info: " + Style.RESET_ALL)
+    print("*"*10)
+    if doctors:
+        print(Fore.GREEN + f"Doctor ID: {doctors[0]}, Doctors Name: {doctors[1]}, Hospital ID: {doctors[2]}, Joining Date: {doctors[3]}, Speciality: {doctors[4]}, Salary: {doctors[5]}, Experience: {doctors[6]}" + Style.RESET_ALL)
+    else:
+        print(Fore.RED + "Doctors name not found or does not exist. Please try again." + Style.RESET_ALL)
+    print("*"*10)
 
-def list_doctor_bySpec():
-    pass
+def list_doctor_bySpec(Speciality, Salary):
+    mycursor.execute('''SELECT * FROM hospital.Doctor WHERE Speciality = %s AND Salary <= %s''', (Speciality, Salary))
+    doctors = mycursor.fetchall()
+    print(Fore.GREEN + f"Doctors Info by specificaitons: " + Style.RESET_ALL)
+    print("*"*10)
+    if doctors:
+        print(Fore.GREEN + f"Doctor ID: {doctors[0]}, Doctors Name: {doctors[1]}, Hospital ID: {doctors[2]}, Joining Date: {doctors[3]}, Speciality: {doctors[4]}, Salary from: {doctors[5]}, Experience: {doctors[6]} years" + Style.RESET_ALL)
+    else:
+        print(Fore.RED + "Error. Please try again." + Style.RESET_ALL)
+    print("*"*10)    
 
-def update_doc_exp():
-    pass
+def update_doc_exp(Doctor_Id, new_experience):
+    try:
+        mycursor.execute('''UPDATE hospital.Doctor SET Experience = %s WHERE Doctor_Id = %s''', (new_experience, Doctor_Id,))
+        mydb.commit()
+        print(Fore.GREEN + f"Doctor ID experience has been updated to {new_experience}." + Style.RESET_ALL)
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+    print("*"*10)
 
 def delete_doctor():
     pass
@@ -121,19 +143,24 @@ while True:
             Speciality = input("Enter doctors speciality: ")
             Salary = int(input("Enter doctors salary: "))
             add_doctor(Doctor_Name, Hospital_Id, Joining_Date, Speciality, Salary)
-        if opt_2 == 2:
-            search_doctor()
-        if opt_2 == 3:
-            list_doctor_bySpec()
-        if opt_2 == 4:
-            update_doc_exp()
-        if opt_2 == 5:
+        elif opt_2 == 2:
+            Doctor_Name = input("Enter Doctors name to search for: ")
+            search_doctor(Doctor_Name)
+        elif opt_2 == 3:
+            Speciality = input("Enter desired doctor speciality: ")
+            Salary_limit = input("Enter salary requirement greater than or equal to: ")
+            list_doctor_bySpec(Speciality, Salary_limit)
+        elif opt_2 == 4:
+            Doctor_Id = int(input("Enter Doctor Id where experience must be updated: "))
+            new_experience = int(input("Enter years of experience: "))
+            update_doc_exp(Doctor_Id, new_experience)
+        elif opt_2 == 5:
             delete_doctor()
-        if opt_2 == 6:
+        elif opt_2 == 6:
             show_all_doctors()
-        if opt_2 == 7:
+        elif opt_2 == 7:
             list_doc_by_hospital()
-        if opt_2 == 8:
+        elif opt_2 == 8:
             continue
         else:
             print("Incorrect option. Please choose valid option.")
