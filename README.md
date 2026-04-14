@@ -1,8 +1,9 @@
 # Some exercises to learn Python language. 
 
 1. Basics
-2. Simple Projects
-3. Python & SQL database projects
-4. Python and JSON exercises.
+2. Excercises
+3. Simple Projects
+4. Python & SQL database projects
+5. Python and JSON exercises.
 
 more to come
