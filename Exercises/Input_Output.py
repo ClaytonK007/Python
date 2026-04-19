@@ -136,3 +136,74 @@ print("-"*15)
 
 for name, score in zip(names, scores):
     print(f"{name:<10} {score}")
+
+# 16. Create an interactive menu.
+while True:
+    print(f"{"MENU":-^20}")
+    print("1. Say Hello.\n2. Calculate square.\n3. Exit")
+    opt = int(input("Please select option: "))
+
+    try:
+        if opt == 1:
+            print("Hi there. We are learning Python.")
+            print("-"*30)
+        elif opt == 2:
+            print("Please enter a number to square.")
+            a = int(input("Enter number: "))
+            print(f"Result: {a * a}")
+            print("-"*30)
+        elif opt == 3:
+            break
+        else:
+            print("Invalid option. Please select a valid option.")
+    except ValueError:
+        print("Invalid option. Please select a valid option.")
+
+# 17. Mask a password input.
+import getpass
+
+usrname = input("Enter username: ")
+passwrd = getpass.getpass("Enter password: ")
+
+if usrname == "admin" and passwrd == "SecretPassword123":
+    print("Login successful.")
+else:
+    print("Invalid username or password. Access Denied.")
+
+# 18. Write a list to a file.
+fruit_list = ["Apple", "Banana", "Cherry", "Date"]
+
+with open("fruits.txt", "w") as file:
+    for fruit in fruit_list:
+        file.write(fruit + "\n")
+
+print("File 'fruit.txt' has been successfully created.")
+
+# 19. Check if file iisf empty or check metadata.
+import os
+
+file = r"C:\Users\xxxx\xxxx\file.txt"
+
+if os.path.exists(file):
+    file_info = os.stat(file)
+    if file_info.st_size == 0:
+        print(f"Status: {file} is empty.")
+    else:
+        print(f"Status: {file} size is {file_info.st_size} bytes.")
+else:
+    print("File not found.")
+
+# 20. Delete a file.
+import os
+
+target = input("Enter filename to delete: ")
+
+if os.path.exists(target):
+    confirm = input(f"Are you sure you want to delete '{target}'? (y/n)")
+    if confirm.lower() == "y":
+        os.remove(target)
+        print(f"File {target} has been deleted.")
+    else:
+        print("Operation cancelled.")
+else:
+    print(f"Error: {target} does not exist.")
