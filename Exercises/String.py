@@ -116,3 +116,13 @@ for string in str1:
         count += 1
 
 print("Vowel Count:", count)
+
+#
+#   10. Prefix/Suffix Check
+#
+str1 = "https://google.com"
+
+if str1.startswith("https") and str1.endswith(".com"):
+    print("Is valid URL: True")
+else:
+    print("Is valid URL: False")
