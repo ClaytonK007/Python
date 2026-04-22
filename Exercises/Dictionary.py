@@ -83,3 +83,35 @@ print("Original dictionary:", keys)
 default = 0
 grades = dict.fromkeys(keys, default)
 print("Initialized dictionary:", grades )
+
+#
+#   9. Rename a Key of Dictionary
+#
+employee = {"fname": "John", "age": 30, "dept": "Engineering"}
+print("Original dictionary:", employee)
+
+new = {"first_name" if key == "fname" else key: value for key, value in employee.items()}
+
+print("New key name:", new)
+
+#
+#   10. Delete a List of Keys
+#
+product = {"id": 101, "name": "Laptop", "price": 999, "stock": 50, "warehouse": "A3"}
+print("Original dictionary:", product)
+
+product.pop("stock")
+product.pop("warehouse")
+
+print(product)
+
+#   OR
+product = {"id": 101, "name": "Laptop", "price": 999, "stock": 50, "warehouse": "A3"}
+print("Original dictionary:", product)
+
+remove = ["stock", "warehouse"]
+
+for key in remove:
+    product.pop(key, None)
+
+print(product)
