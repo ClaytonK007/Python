@@ -80,5 +80,84 @@ occurrences = count_word(filename, word_to_count)
 print(f"The word '{word_to_count}' appears {occurrences} times in '{filename}'")
 
 #
+#   7. Write To a File
 #
+filename = "output.txt"
+content = "Hello, im learning Python."
+try:
+    with open(filename, "w") as file:
+        file.write(content)
+    print(f"Successfully wrote '{filename}' file.")
+except Exception as e:
+    print(f"An error has occured: {e}")
+
 #
+#   8. Append To a File
+#
+filename = "output.txt"
+content = "\nThis is an appended line."
+try:
+    with open(filename, "a") as file:
+        file.write("\n" + content)
+    print(f"Successfully appended to '{filename}' file.")
+except FileNotFoundError:
+    print(f"Error: '{filename}' not found.")
+except Exception as e:
+    print(f"An error has occured: {e}")
+
+#
+#   9. Copy a File
+#
+import shutil
+
+source = input("Enter source file name:")
+destination = "new_file.txt"
+try:
+    shutil.copy2(source, destination)
+    print(f"Successfully copied '{source}' file to '{destination}'.")
+except FileNotFoundError:
+    print(f"Error: '{source}' not found.")
+except Exception as e:
+    print(f"An error has occured: {e}")
+except PermissionError:
+    print("Permission denied.")
+
+#   OR
+def copy_file(source, destination):
+    try:
+        with open(source, "r") as source_file:
+            content = source_file.read()
+        with open(destination, "w") as destination:
+            destination.write(content)
+        print(f"Successfully copied '{source}' file.")
+    except FileNotFoundError:
+        print(f"Error: '{source}' not found.")
+    except Exception as e:
+        print(f"An error has occured: {e}")
+    except PermissionError:
+        print("Permission denied.")
+
+source = input("Enter source file name:")
+destination = "new_file.txt"
+copy_file(source, destination)
+
+#
+#   10. Read and Write Binary
+#
+def copy_file(source, destination):
+    try:
+        with open(source, "rb") as source_file:
+            content = source_file.read()
+        with open(destination, "wb") as destination:
+            destination.write(content)
+        print(f"Successfully copied '{source}' file.")
+    except FileNotFoundError:
+        print(f"Error: '{source}' not found.")
+    except Exception as e:
+        print(f"An error has occured: {e}")
+    except PermissionError:
+        print("Permission denied.")
+
+source = input("Enter source file name:")
+destination = "binary_file.bin"
+copy_file(source, destination)
