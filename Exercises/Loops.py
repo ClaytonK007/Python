@@ -246,3 +246,143 @@ while num != 1:
       else:
             num = (3 * num) + 1
       print(f", {num}", end="")
+
+#
+#   19. Armstrong Number Check
+#
+num = 153
+num_to_str = str(num)
+power = len(num_to_str)
+total = 0
+
+for digit in num_to_str:
+    total += int(digit) ** power
+
+if total == num:
+    print(f"{num} is an Armstrong number.")
+else:
+    print(f"{num} is not an Armstrong number.")
+
+#
+#   20. Print right-angled triangle Number Pattern using a Loop
+#
+print("Number pattern:")
+
+for i in range(1, 6):
+    for j in range(1, i + 1):
+        print(j, end="")
+    print()
+
+#
+#   21. Print the decreasing pattern
+#
+n = 5
+
+for i in range(n, 0, -1):
+    for j in range(i, 0, -1):
+        print(j, end="")
+    print()
+
+#
+#   22. Print the alternate numbers pattern
+#
+for i in range(1, 21, 2):
+    print(i, end=" ")
+
+#
+#   23. Print Alphabet pyramid (A, BB, CCC) pattern
+#
+for i in range(5):
+    letter = chr(65 + i)
+    for j in range(i + 1):
+        print(letter, end=" ")
+    print()
+
+#
+#   24. Hollow square pattern
+#
+for i in range(5):
+      for j in range(5):
+            if i == 0 or i == 5 - 1 or j == 0 or j == 5 - 1:
+                  print("*", end=" ")
+            else:
+                  print(" ", end=" ")
+        
+      print()
+
+#
+#   25. Print pyramid pattern of stars
+#
+for i in range(1, 5 + 1):
+    print("*" * i)
+for i in range(5 - 1, 0, -1):
+    print("*" * i)
+
+#
+#   26. Print full multiplication table (1 to 10)
+#
+for i in range(1, 11):
+      for j in range(1, 11):
+            print(i * j, end="\t")
+
+      print()
+
+#
+#   27. List Cumulative Sum: Each element is the sum of all previous
+#
+nums = [1, 2, 3, 4]
+sum = 0
+result = []
+
+for num in nums:
+    sum += num
+    result.append(sum)
+
+print("Cumulative Sum:", result)
+
+#
+#   28. Dictionary Filter: Extract pairs where value exceeds a threshold.
+#
+scores = {"Alice": 85, "Bob": 70, "Charlie": 95, "David": 60}
+threshold = 75
+
+filtered = {k: v for k, v in scores.items() if v > threshold}
+
+print("Passing Students:", filtered)
+
+#     OR
+scores = {"Alice": 85, "Bob": 70, "Charlie": 95, "David": 60}
+threshold = 75
+passing = {}
+
+for name, score in scores.items():
+    if score >= threshold:
+        passing[name] = score
+print(f"Passing Students:", passing)
+
+#
+#   29. Find common elements (Intersection) using loop
+#
+list_a = [1, 2, 3, 4, 5]
+list_b = [4, 5, 6, 7, 8]
+intersection = []
+
+for i in list_a:
+    for j in list_b:
+        if i == j:
+            if i not in intersection:
+                intersection.append(i)
+
+print(intersection)
+
+#
+#   30. Remove duplicates without set
+#
+nums = [1, 2, 2, 3, 4, 4, 4, 5]
+unique = []
+
+for num in nums:
+    if num not in unique:
+       unique.append(num)
+
+print("Unique list:", unique)
