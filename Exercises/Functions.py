@@ -119,3 +119,77 @@ def print_info(**kwargs):
         print(f"{key} : {value}")
 
 print_info(name="Alice", age=30, city="New York")
+
+#
+#   12. Modifying Global Variables
+#
+global_var = 10
+
+def modify():
+    global global_var
+    global_var = 20
+
+print("Initial:", global_var)
+modify()
+print("Modified:", global_var)
+
+#
+#   13. Recursive Factorial (Non-Negative Integers)
+#
+def factorial(n):
+    if n <= 1:
+        return  1
+    else:
+        return n * factorial(n - 1)
+
+num = 5
+print(f"Factorial of {num} is {factorial(num)}")
+
+#
+#   14. Create a Lambda Function to Square a Number
+#
+square = lambda x: x**2
+
+print(square(5))
+
+#
+#   15. Filter a List Using Lambda and filter()
+#
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+filtered = list(filter(lambda x: x % 2 == 0, numbers))
+
+print(filtered)
+
+#
+#   16. Transform a List Using Lambda and map()
+#
+numbers = [1, 2, 3, 4, 5]
+double = list(map(lambda x: x * 2, numbers))
+
+print(double)
+
+#
+#   17. Sort Complex Data with sorted() and Lambda
+#
+students = [("Alice", 88), ("Bob", 75), ("Charlie", 92)]
+sorted_students = sorted(students, key=lambda student: student[1])
+
+print(sorted_students)
+
+#
+#   18. Create a Higher-Order Function
+#
+def apply_operation(func, x, y):
+    return func(x, y)
+
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+result1 = apply_operation(add, 5, 3)
+result2 = apply_operation(multiply, 5, 3)
+
+print("Addition result:", result1)
+print("Multiplication result:", result2)
