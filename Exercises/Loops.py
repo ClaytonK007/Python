@@ -117,3 +117,132 @@ for char in string:
 
 print(f"Original string: {string}")
 print(f"Reversed string: {rev_string}")
+
+#
+#   12. Count vowels and consonants in a sentence
+#
+string = "Loops are Fun!"
+vowels = "aeiou"
+v = 0
+c = 0
+
+for char in string.lower():
+      if char.isalpha():
+            if char in vowels:
+                  v += 1
+            else:
+                  c += 1
+print("Vowels:", v)
+print("Consonants:", c)
+
+#
+#   13. Count total number of digits in a number
+#
+num = 75869
+count = 0
+
+while num != 0:
+    num //= 10
+    count += 1
+
+print("Total number of digits:", count)
+
+#
+#   14. Reverse an integer number
+#
+num = 75869
+reversed_num = 0
+print("Original number:", num)
+
+while num > 0:
+    digit = num % 10
+    reversed_num = reversed_num * 10 + digit
+    num //= 10
+
+print("Reversed number:", reversed_num)
+
+#
+#   15. Find largest and smallest digit in a number
+#
+num = 75869
+print("Original number:", num)
+largest = 0
+smallest = 9
+
+
+while num > 0:
+    digit = num % 10
+    largest = max(digit, largest)
+    smallest = min(digit, smallest)
+    num //= 10
+
+print("Largest digit:", largest)
+print("Smallest digit:", smallest)
+
+# OR
+
+num = 75869
+print("Original number:", num)
+largest = 0
+smallest = 9
+
+while num > 0:
+      digit = num % 10
+
+      if digit > largest:
+            largest = digit
+      
+      if digit < smallest:
+           smallest = digit
+
+      num //= 10
+
+print("Largest digit:", largest)
+print("Smallest digit:", smallest)
+
+#
+#   16. Check if a number is a palindrome
+#
+num = 121
+print("Original number:", num)
+temp = num
+check = 0
+
+
+while num > 0:
+    digit = num % 10
+    check = (check * 10) + digit
+    num //= 10
+
+if temp == check:      
+      print("Yes, number is palindrome.")
+else:
+      print("No, number is not palindrome.")
+
+#
+#   17. Find factorial of a number
+#
+num = 5
+factorial = 1
+
+if num < 0:
+      print("Factorial does not exist for negative numbers.")
+elif num == 0:
+      ("Factorial of 0 is 1.")
+else:
+      for i in range(1, num + 1):
+            factorial = factorial * i
+      print(f"The factorial of {num} is {factorial}")  
+
+#
+#   18. Collatz Conjecture: Generate a sequence until it reaches 1
+#
+num = 6
+print(num, end="")
+
+while num != 1:
+      if num % 2 == 0:
+            num = num // 2
+      else:
+            num = (3 * num) + 1
+      print(f", {num}", end="")
