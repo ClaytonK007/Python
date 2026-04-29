@@ -1,120 +1,134 @@
 #
-#   1: List Creation using two lists
+#   1. Perform Basic List Operations 
 #
-list1 = [3, 6, 9, 12, 15, 18, 21]
-list2 = [4, 8, 12, 16, 20, 24, 28]
-final = list()
+numbers = [10, 20, 30, 40, 50]
+print("Original list:", numbers)
 
-odd = list1[1::2]
-even = list2[0::2]
+print("Third element in list:", numbers[2])
+print("Length of list:", len(numbers))
 
-print("Element at odd-index position of first list:", odd)
-print("Element at even-index position of second list:", even)
-
-final.extend(odd)
-final.extend(even)
-print("Both lists added:", final)
+empty = len(numbers) == 0
+print("Is list empty:", empty)
 
 #
-#   2. Remove and add item in a list
+#   2. Perform List Manipulation
 #
-list1 = [54, 44, 27, 79, 91, 41]
-print("Original list:", list1)
+initial_list = [100, 50, 400, 500]
+print("Original list:", initial_list)
 
-index = list1.pop(4)
-print("List After removing element at index 4:", list1)
+initial_list[1] = 200
+print("Updated list (change):", initial_list)
 
-list1.insert(2, index)
-print("List after Adding element at index 2:", list1)
+initial_list.append(600)
+print("Updated list (append):", initial_list)
 
-list1.append(index)
-print("List after Adding element at last:", list1)
+initial_list.insert(2, 300)
+print("Updated list (insert):", initial_list)
 
-#
-#   3. Slice list into 3 equal chunks and reverse each chunk
-#
-list1 = [11, 45, 8, 23, 14, 12, 78, 45, 89]
-print("Original list:", list1)
+initial_list.remove(600)
+print("Updated list (remove by value):", initial_list)
 
-length = len(list1)
-chunk = int(length / 3)
-start = 0
-end = chunk
-
-for item in range(3):
-    index = slice(start, end)
-
-    list_chunk = list1[index]
-    print("Chunk", item, list_chunk)
-
-    print("After reversing it ", list(reversed(list_chunk)))
-
-    start = end
-    end += chunk
+initial_list.pop(0)
+print("Updated list (remove by index):", initial_list)
 
 #
-#   4. Count the occurrence of each element from a list
+#   3. Sum and Average of All Numbers in a List
 #
-list1 = [11, 45, 8, 11, 23, 45, 23, 45, 89]
-print("Original list:", list1)
+numbers = [10, 20, 30, 40, 50]
 
-count = dict()
-for item in list1:
-    if item in count:
-        count[item] += 1
+sum_num = sum(numbers)
+average = sum_num / len(numbers)
+
+print("Original list:", numbers)
+print("Sum of numbers:", sum_num)
+print("Average of list of numbers:", average)
+
+#
+#   4. Find Maximum and Minimum from List
+#
+data = [45, 12, 89, 2, 67]
+
+print("Original list:", data)
+print("Maximun:", max(data))
+print("Minimum:", min(data))
+
+#
+#   5. Calculate the Product of All Elements
+#
+data = [2, 3, 5, 7]
+product = 1
+
+for num in data:
+    product *= num
+
+print("Original list:", data)
+print("Product of all elements in list:", product)
+
+#
+#   6. Count Even and Odd Numbers
+#
+data = [10, 21, 4, 45, 66, 93, 11]
+print("Original list:", data)
+even_count = 0
+odd_count = 0
+
+for num in data:
+    if num % 2 == 0:
+        even_count += 1
     else:
-        count[item]= 1
+        odd_count += 1
 
-print("Count of each element:", count)
-
-#
-#   5. Paired Elements from Two Lists as a Set
-#
-list1 = [2, 3, 4, 5, 6, 7, 8]
-list2 = [4, 9, 16, 25, 36, 49, 64]
-print("Original list 1:", list1)
-print("Original list 2:", list2)
-
-paired = set(zip(list1, list2))
-
-print(paired)
+print("Even numbers:", even_count)
+print("Odd numbers:", odd_count)
 
 #
-#   6. Set Intersection and Removal
+#   7. Reverse a List
 #
-set1 = {23, 42, 65, 57, 78, 83, 29}
-set2 = {57, 83, 29, 67, 73, 43, 48}
-print("Original list 1:", set1)
-print("Original list 2:", set2)
+data = [100, 200, 300, 400, 500]
+print("Original list:", data)
 
-intersection = set1.intersection(set2)
-print("Intersection:", intersection)
+data.reverse()
+print("Reversed list:", data)
 
-for item in intersection:
-    set1.remove(item)
-
-print("Set after removing common element:", set1)
+#   OR
+data = [100, 200, 300, 400, 500]
+reversed_num = data[::-1]
+print("Reversed list:", reversed_num)
 
 #
-#   7. Subset or Superset of another set
+#   8. Sort a List of Numbers
 #
-set1 = {27, 43, 34}
-set2 = {34, 93, 22, 27, 43, 53, 48}
-print("Original list 1:", set1)
-print("Original list 2:", set2)
+data = [56, 12, 89, 3, 22]
+print("Original list:", data)
 
-print("Set 1 is a subset of Set 2", set1.issubset(set2))
-print("Set 2 is a subset of Set 1", set2.issubset(set1))
+data.sort()
+print("Sorted list:", data)
 
-print("Set 1 is a superset of Set 2", set1.issubset(set2))
-print("Set 2 is a superset of Set 1", set2.issubset(set1))
+#
+#   9. Create a Copy of a List
+#
+data = ["Apple", "Banana", "Cherry"]
+print("Original list:", data)
 
+data.copy()
+print("Copied list:", data)
 
-if set1.issubset(set2):
-    set1.clear()
+#
+#   10. Combine Two Lists
+#
+list1 = ["Physics", "Chemistry"]
+list2 = ["Maths", "Biology"]
 
-if set2.issubset(set1):
-    set2.clear()
+combined = list1 + list2
+print("First list:", list1)
+print("Second list:", list2)
+print("Combined list:", combined)
 
-print("Set 1:", set1)
-print("Set 2:", set2)
+#
+#   11. List Slicing: Extract Middle Elements
+#
+data = [10, 20, 30, 40, 50, 60, 70]
+print("Original list:", data)
+
+middle = data[2:5]
+print("Sliced list:", middle)
