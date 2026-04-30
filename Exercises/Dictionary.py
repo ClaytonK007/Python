@@ -115,3 +115,94 @@ for key in remove:
     product.pop(key, None)
 
 print(product)
+
+#
+#   11. Check Value Existence
+#
+roles = {"alice": "admin", "bob": "editor", "carol": "viewer"}
+
+print("'editor' exists as a value:", "editor" in roles.values())
+print("'manager' exists as a value:", "manager" in roles.values())
+
+#
+#   12. Sum All Values
+#
+expenses = {"rent": 1200, "food": 300, "transport": 150, "utilities": 200}
+print("Expenses dictionary:", expenses)
+
+total = sum(expenses.values())
+print("Total of expenses:", total)
+
+#
+#   13. Extract Subset of Keys
+#
+user = {"id": 42, "username": "jdoe", "email": "jdoe@example.com", "password": "s3cr3t", "joined": "2021-03-15"}
+print("User dictionary:", user)
+
+keys_to_keep = ["id", "username", "email"]
+subset = {k: user[k] for k in keys_to_keep if k in user}
+print("Extracted subset:", subset)
+
+#
+#   14. Map Two Lists (zip)
+#
+attributes = ["brand", "model", "year", "color"] 
+details = ["Honda", "Civic", 2023, "silver"]
+print("Keys:", attributes)
+print("Values:", details)
+
+mapped = dict(zip(attributes, details))
+
+print("Mapped into dicitonary:", mapped)
+
+#
+#   15. Count Character Frequencies
+#
+text = "hello world"
+letters = {}
+
+for char in text:
+    letters[char] = letters.get(char, 0) + 1
+
+print("Character frequency:", letters)
+
+#
+#   16. Modify Nested Dictionary
+#
+company = {"name": "TechCorp", "location": {"city": "Berlin", "country": "Germany"}}
+print("Original dictionary:", company)
+
+company["location"]["city"] = "Munich"
+print("Modified dictionary:", company)
+
+#
+#   17. Update Deeply Nested Key
+#
+data = {"school": {"department": {"class": {"teacher": "Mr. Smith", "students": 30}}}}
+print("Original dictionary:", data)
+
+data["school"]["department"]["class"]["students"] = 35
+print("Modified dictionary:", data)
+
+#
+#   18. Dictionary Comprehension
+#
+data = {n: n**2 for n in range(1, 11) }
+print(data)
+
+#
+#   19. Filter Dictionary
+#
+scores = {"Alice": 82, "Bob": 45, "Carol": 91, "Dave": 58, "Eve": 73}
+filtered = {k: v for k, v in scores.items() if v > 60}
+print("Oriinal dictionary:", scores)
+print("Filtered dictionary:", filtered)
+
+#
+#   20. Key of Minimum Value
+#
+stock = {"apples": 34, "bananas": 12, "oranges": 57, "grapes": 8, "mangoes": 23}
+min_key = min(stock, key=stock.get)
+
+print("Oriinal dictionary:", stock)
+print("Lowest stock item:", min_key)
