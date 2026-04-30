@@ -134,3 +134,78 @@ print("Min of tuple:", min(scores))
 #
 #   15. Tuple Filtering
 #
+numbers = (3, 14, 7, 22, 9, 41, 18, 5)
+
+print("Filtered:", [x for x in numbers if x > 10])
+
+#   OR
+
+filtered = list(filter(lambda x: x > 10, numbers))
+
+print("Filtered:", filtered)
+
+#
+#   16. Tuple Mapping
+#
+numbers = (1, 2, 3, 4, 5, 6)
+
+def square(n):
+    return n ** n
+
+squared_map1 = tuple(map(square, numbers))
+squared_map2 = tuple(map(lambda x: x ** 2, numbers))
+squared_exp  = tuple(x ** 2 for x in numbers)
+
+print("Squared (mapping with function):", squared_map1)
+print("Squared (mapping with lambda):", squared_map2)
+print("Squared (with expression:", squared_exp)
+
+#
+#   17. Tuple Dictionary Mapping
+#
+keys = ("name", "age", "city") 
+values = ("Alice", 30, "Pune")
+
+dictionary = dict(zip(keys, values))
+dictionary1 = {keys: values for keys, values in zip(keys, values)}
+
+print("Dictionary mapping (zip):", dictionary)
+print("Dictionary mapping (expression):", dictionary1)
+
+#
+#   18. Tuple Intersection
+#
+t1 = (1, 2, 3, 4, 5, 6) 
+t2 = (4, 5, 6, 7, 8, 9)
+
+common = tuple(sorted(set(t1) & set(t2)))
+common_exp = tuple(x for x in t1 if x in t2)
+
+print("Common elements (conversion method):", common)
+print("Common elements (expression method):", common_exp)
+
+#
+#   19. The “Modification” Hack
+#
+colours = ("red", "green", "blue")
+print("Original tuple:", colours)
+
+change = list(colours)
+change[1] = "yellow"
+
+colours = tuple(change)
+print("Modified tuple:", colours)
+
+#
+#   20. Tuple Mutability
+#
+t = (1, 2, [3, 4, 5])
+print("Original tuple:", t)
+print("Tuple id before:", id(t))
+
+t[2].append(99)
+
+print("Appended tuple:", t)
+print("Tuple id after:", id(t))
+
+print("Same object?:", id(t) == id(t))
