@@ -92,3 +92,45 @@ print("Original tuple:", votes)
 
 print("Number of 'yes' votes:", votes.count("yes"))
 print("Number of 'no' votes:", votes.count("no"))
+
+#
+#   11. Tuple Unpacking
+#
+person = ("Alice", 30, "Engineer", "Pune")
+
+name, age, job, city = person
+
+print("Name:", name)
+print("Age:", age)
+print("Job:", job)
+print("City:", city)
+
+#
+#   12. The Swap Trick
+#
+a = 100 
+b = 200
+print("Before swap: a=", a, "& b=", b)
+
+a, b = b, a
+print("After swap: a=", a, "& b=", b)
+
+#
+#   13. Nested Tuple Access
+#
+matrix = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+
+print("Nested tuple access:", matrix[1][2])
+
+#
+#   14. Tuple Statistics
+#
+scores = (88, 95, 70, 62, 99, 74, 85)
+
+print("Sum  of tuple:", sum(scores))
+print("Max of tuple:", max(scores))
+print("Min of tuple:", min(scores))
+
+#
+#   15. Tuple Filtering
+#
