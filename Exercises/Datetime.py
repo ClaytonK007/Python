@@ -84,3 +84,96 @@ date_string = "20 January, 2025"
 format = datetime.strptime(date_string, "%d %B, %Y")
 
 print(format)
+
+#
+#   11. Subtract a Week From a Given Date
+#
+given_date = datetime(2025, 3, 15)
+new = given_date - timedelta(weeks=1)
+
+print("Original:", given_date)
+print("Minus week:", new)
+
+#
+#   12. Add Week to Given Date
+#
+given_date = datetime(2025, 3, 15)
+new = given_date + timedelta(weeks=1)
+
+print("Original:", given_date)
+print("Adding week:", new)
+
+#
+#   13. Calculate Days Between Two Dates
+#
+date1 = datetime(2025, 1, 1)
+date2 = datetime(2025, 3, 15)
+
+delta = date2 - date1
+
+print("Days between dates:", delta.days)
+
+#
+#   14. Convert Unix Timestamp to Datetime
+#
+timestamp = 1672531200
+
+convert = datetime.fromtimestamp(timestamp)
+print("Unix to datetime:", convert)
+
+#
+#   15. Get ISO Week Number
+#
+given_date = datetime(2026, 1, 1)
+
+iso = int(given_date.strftime("%V"))
+print("ISO week number", iso)
+
+#
+#   16. Subtract 5 Hours and 30 Minutes
+#
+current = datetime.now()
+new = current - timedelta(hours=5, minutes=30)
+
+print("5h 30min before now:", new)
+
+#
+#   17. Check for Leap Year
+#
+import calendar
+
+def leap(year):
+    return calendar.isleap(year)
+
+year = int(input("Enter a year:"))
+print(f"Is {year} is a leap year?: {leap(year)}")
+
+#
+#   18. Calculate Age in Days
+#
+birthdate = date(1995, 6, 15)
+today = date.today()
+delta = (today - birthdate).days
+
+print("Age in days:", delta)
+
+#
+#   19. Difference in Seconds
+#
+dt1 = datetime(2025, 1, 1, 9, 0, 0) 
+dt2 = datetime(2025, 1, 1, 11, 45, 30)
+
+delta = (dt2 - dt1).total_seconds()
+
+print("Difference in seconds:", delta)
+
+#
+#   20. Print a Monthly Calendar
+#
+year = int(input("Enter a year:"))
+month = int(input("Enter a month:"))
+
+formatted = calendar.month(year, month)
+
+print("Calendar:")
+print(formatted)
