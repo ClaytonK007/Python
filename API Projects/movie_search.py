@@ -11,16 +11,16 @@ class OMBApp():
         self.omdbWindow = tk.Toplevel(rootWindow)
         self.omdbWindow.title("OMDB")
         self.omdbWindow.geometry("500x500")
-        self.api_key = "YOUR_API"
+        self.api_key = "4224f15f"
         self.create_widgets()
 
     def create_widgets(self):
         #   Create UI elements
-        self.label = tk.Label(self.root, text="Enter Movie Name:")
-        self.entry = tk.Entry(self.root, width=20)
-        self.search_button = tk.Button(self.root, text="Search", command=self.search_movie)
-        self.result_text = tk.Text(self.root, width=40, height=20, wrap=tk.WORD)
-        self.poster_label = tk.Label(self.root)
+        self.label = tk.Label(self.rootWindow, text="Enter Movie Name:")
+        self.entry = tk.Entry(self.rootWindow, width=20)
+        self.search_button = tk.Button(self.rootWindow, text="Search", command=self.search_movie)
+        self.result_text = tk.Text(self.rootWindow, width=40, height=20, wrap=tk.WORD)
+        self.poster_label = tk.Label(self.rootWindow)
 
         #   Widget Layout
         self.label.grid(row=0, column=0, padx=10, pady=10)
@@ -64,8 +64,9 @@ class OMBApp():
                   f"IMDb Rating: {data.get('imdbRating')}\n")
         self.result_text.insert(tk.END, result)
         poster_url = data.get("Poster")
-        if poster_url and poster_url == "N/A":
+        if poster_url and poster_url != "N/A":
             response = requests.get(poster_url)
+            print()
             if response.status_code == 200:
                 image_data = response.content
                 image = Image.open(BytesIO(image_data))
