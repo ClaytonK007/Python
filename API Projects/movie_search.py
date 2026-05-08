@@ -11,7 +11,7 @@ class OMBApp():
         self.omdbWindow = tk.Toplevel(rootWindow)
         self.omdbWindow.title("OMDB")
         self.omdbWindow.geometry("500x500")
-        self.api_key = "4224f15f"
+        self.api_key = "your_api"
         self.create_widgets()
 
     def create_widgets(self):
