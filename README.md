@@ -6,5 +6,6 @@
 4. Python & SQL database projects
 5. Python and JSON exercises.
 6. API projects
+7. GUI projects
 
 more to come
