@@ -6,13 +6,13 @@ from database import *
 from models import *
 from passlib.context import CryptContext
 
-#   Create tables
-Base.metadata.create_all(bind=engine)
-
 #   Initialize App, Templates and Password encryption
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+#   Create tables
+Base.metadata.create_all(bind=engine)
 
 #   Database dependency
 def get_db():
@@ -94,9 +94,28 @@ def read_index(request: Request, db: Session = Depends(get_db)):
     )
 
 #   Add Task
+@app.post("/tasks")
+def add_task(request: Request, title: str= Form(...), db: Session = Depends(get_db)):
+    user_id = request.cookies.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login", status_code=303)
+    task = Task(title=title, owner_id = int(user_id))
+    db.add(task)
+    db.commit
+    return RedirectResponse(url="/", status_code=303)
 
 #   Toggle Complete
-
+@app.post("/tasks/{task_id}/toggle")
+def toggle_task(task_id: int, request: Request, db: Session = Depends(get_db)):
+    user_id = request.cookies.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login", status_code=303)
+    task = db.query(Task).filter(Task.id == task_id, Task.owner_id == int(user_id)).first()
+    if not task:
+        raise HTMLResponse(status_code=404, detail="Task not found.")
+    task_completed = not task.completed
+    db.commit()
+    return HTMLResponse(url="/", status_code=303)
 #   Delete Task
 
 #   Update Task
