@@ -24,8 +24,8 @@ def get_db():
 
 #   Registration
 @app.get("/register", response_class=HTMLResponse)
-def register_page(request:Request):
-    return templates.TemplateResponse("register.html", {"request":request})
+def register_page(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
 
 @app.post("/register")
 def register(
@@ -35,9 +35,8 @@ def register(
     db: Session = Depends(get_db)
 ):
     if db.query(User).filter(User.username == username).first():
-        return templates.TemplateResponse(
-            "register.html", {"request":request, "error": "Username already exists."}
-        )
+        return templates.TemplateResponse("register.html", {"request":request, "error": "Username already exists."})
+    
     hashed_password = pwd_context.hash(password)
     user = User(username=username, hashed_password=hashed_password)
     db.add(User)
@@ -45,6 +44,26 @@ def register(
     return RedirectResponse(url="/login", status_code=303)
 
 #   Login
+@app.get("/login", response_class=HTMLResponse)
+def login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.post("/login")
+def login(
+    request: Request,
+    username: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    user = db.query(User).filter(User.username == username).first()
+    if not user:
+        return templates.TemplateResponse("login.html", {"request": request, "error": "User not found."})
+    if not pwd_context.verify(password, user.hashed_password):
+        return templates.TemplateResponse("login.html", {"request": request,"error": "Invalid password."})
+    
+    response = RedirectResponse(url="/", status_code=303)
+    response.set_cookie(key="user.id", value=str(user.id), httponly=True)
+    return response
 
 #   Logout
 
