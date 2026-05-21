@@ -66,6 +66,32 @@ def login(
     return response
 
 #   Logout
+@app.get("/logout")
+def logout():
+    response = RedirectResponse(url="/login", status_code=303)
+    response.delete_cookie("user_id")
+    return response
+
+#   Home Page
+@app.get("/", response_class=HTMLResponse)
+def read_index(request: Request, db: Session = Depends(get_db)):
+    user_id = request.cookies.get(user_id)
+    user = None
+    tasks = []
+
+    if user_id:
+        user = db.query(User).filter(User.id == int(user_id)).first()
+        if user:
+            tasks = db.query(Task).filter(Task.id == int(user_id)).all()
+    return templates.TemplateResponse(
+        "index.html",
+        {
+            "request": request,
+            "tasks": tasks,
+            "user": user
+
+        }
+    )
 
 #   Add Task
 
