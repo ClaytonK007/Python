@@ -8,9 +8,8 @@ class OMBApp():
     #   Initialize user interface method
     def __init__(self, rootWindow):
         self.rootWindow = rootWindow
-        self.omdbWindow = tk.Toplevel(rootWindow)
-        self.omdbWindow.title("OMDB")
-        self.omdbWindow.geometry("500x500")
+        self.rootWindow.title("OMDB")
+        self.rootWindow.geometry("800x550")
         self.api_key = "your_api"
         self.create_widgets()
 
@@ -21,13 +20,13 @@ class OMBApp():
         self.search_button = tk.Button(self.rootWindow, text="Search", command=self.search_movie)
         self.result_text = tk.Text(self.rootWindow, width=40, height=20, wrap=tk.WORD)
         self.poster_label = tk.Label(self.rootWindow)
-
+        
         #   Widget Layout
-        self.label.grid(row=0, column=0, padx=10, pady=10)
-        self.entry.grid(row=0, column=1, padx=10, pady=10)
-        self.search_button.grid(row=0, column=2, padx=10, pady=10)
-        self.result_text.grid(row=1, column=0, columnspan=1, padx=10, pady=10)
-        self.poster_label.grid(row=1, column=2, columnspan=1, padx=10, pady=10)
+        self.label.grid(row=0, column=1, padx=10, pady=10)
+        self.entry.grid(row=0, column=2, padx=10, pady=10)
+        self.search_button.grid(row=0, column=3, padx=10, pady=10)
+        self.result_text.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
+        self.poster_label.grid(row=1, column=2, padx=10, pady=10)
 
     #   Function to handle API call and errors
     def search_movie(self):
