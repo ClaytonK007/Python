@@ -1,4 +1,3 @@
-#   From Zero to Expert
 #   A Practical, Hands-On Guide to Becoming a Skilled Programmer
 
 #   1. Python Fundamentals
@@ -66,3 +65,53 @@ def is_valid_age(age):
 print(is_valid_age(33))     # Ture
 print(is_valid_age(-5))     # False
 print(is_valid_age(130))    # False
+
+#   4. Object-Oriented Programming
+#   4.1 Example - reating objects that bundle data (attributes) with behavior (methods).
+
+class Person:
+    def __init__(self, name, surname, age):
+        self.name = name
+        self.surname = surname
+        self.age = age
+
+    def initials(self):
+        return (self.name[0] + self.surname[0]).upper()
+    
+    def __repr__(self):
+        return f"{self.name} {self.surname} ({self.age})"
+
+person = Person("Marshal", "Ekrikson", 35)
+print(person)
+print(person.name)
+print(person.surname)
+print(person.age)
+print(person.initials())
+
+#   4.2 Inheritance allows one class to extend another.
+#   Example - A Student is a kind of Person, so it can reuse everything
+#   Person already does and add its own extras
+
+class Student(Person):
+    def __init__(self, name, surname, age, student_number):
+        super().__init__(name, surname, age)
+        self.student_number = student_number
+
+student = Student("Ryan", "Adams", 35, "CS1117")
+print(student)
+print(student.student_number)
+
+#   4.3 Exercise - extend the Person class:
+#   Add a method is_adult() to Person that returns True if age is 18 or older.
+
+class Person:
+    def __init__(self, name, surname, age):
+        self.name = name
+        self.surname = surname
+        self.age = age
+
+    def is_adult(self):
+        return self.age >= 18
+    
+print(Person("Liam", "Harshall", 35).is_adult())    # True
+print(Person("Liam", "Harshall", 17).is_adult())    # False
